@@ -5,7 +5,6 @@ import xgboost as xgb
 import warnings
 import pandas as pd
 import numpy as np
-import openbabel
 from PyBioMed.PyMolecule import fingerprint
 from rdkit import Chem
 from rdkit.Chem import MACCSkeys
