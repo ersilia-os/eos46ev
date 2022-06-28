@@ -65,7 +65,7 @@ class Model(object):
             ).wait()
         with open(pred_file, "r") as f:
             reader = csv.reader(f)
-            h = next(reader)[1:]
+            h = next(reader)
             R = []
             for r in reader:
                 R += [{"embedding": [float(x) for x in r]}]
