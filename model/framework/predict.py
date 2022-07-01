@@ -1,5 +1,6 @@
 import joblib
 import sys
+import os
 import sklearn
 import xgboost as xgb
 import warnings
@@ -13,6 +14,8 @@ from descriptastorus.descriptors.DescriptorGenerator import MakeGenerator
 from descriptastorus.descriptors import rdNormalizedDescriptors
 
 warnings.filterwarnings("ignore")
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
 
 smiles_file = str(sys.argv[1])
 results_file = str(sys.argv[2])
@@ -45,7 +48,7 @@ else:
     input_des = np.concatenate((des_, ecfp), axis=1) 
 
 ## Load Model and make predictions
-model = joblib.load("stack.joblib")
+model = joblib.load(os.path.join(ROOT, "stack.joblib"))
 pred = model.predict_proba(input_des)
 pred = pred[:,1]
 
