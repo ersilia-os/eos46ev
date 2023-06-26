@@ -29,5 +29,11 @@
     "Publication": "https://academic.oup.com/bib/article-abstract/22/5/bbab068/6209685",
     "Source Code": "http://cadd.zju.edu.cn/chemtb/",
     "License": "None",
-    "Contributor": "Amna-28"
+    "Contributor": "Amna-28",
+    "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos46ev.zip",
+    "DockerHub": "https://hub.docker.com/r/ersiliaos/eos46ev",
+    "Docker Architecture": [
+        "AMD64",
+        "ARM64"
+    ]
 }

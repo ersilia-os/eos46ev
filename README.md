@@ -23,6 +23,11 @@ Identification of active molecules against Mycobacterium tuberculosis using an e
 * [Source Code](http://cadd.zju.edu.cn/chemtb/)
 * Ersilia contributor: [Amna-28](https://github.com/Amna-28)
 
+## Ersilia model URLs
+* [GitHub](https://github.com/ersilia-os/eos46ev)
+* [AWS S3](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos46ev.zip)
+* [DockerHub](https://hub.docker.com/r/ersiliaos/eos46ev) (AMD64, ARM64)
+
 ## Citation
 
 If you use this model, please cite the [original authors](https://academic.oup.com/bib/article-abstract/22/5/bbab068/6209685) of the model and the [Ersilia Model Hub](https://github.com/ersilia-os/ersilia/blob/master/CITATION.cff).
