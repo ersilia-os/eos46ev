@@ -12,6 +12,7 @@ from rdkit.Chem import MACCSkeys
 from rdkit.Chem import AllChem
 from descriptastorus.descriptors.DescriptorGenerator import MakeGenerator
 from descriptastorus.descriptors import rdNormalizedDescriptors
+from numpy import savetxt
 
 warnings.filterwarnings("ignore")
 
@@ -22,8 +23,15 @@ results_file = str(sys.argv[2])
 
 ## load data
 
-sml = pd.read_csv(smiles_file, names=['Smiles'])
-smiles = sml['Smiles'].to_numpy()
+# sml = pd.read_csv(smiles_file, names=['Smiles'])
+# smiles = sml['Smiles'].to_numpy()
+# print("smiles",smiles)
+# print("Len of smiles",len(smiles))
+# mol = [Chem.MolFromSmiles(x) for x in smiles]
+# print("mol",mol)
+
+smiles_df = pd.read_csv(smiles_file)
+smiles = smiles_df[smiles_df.columns[0]].tolist()
 mol = [Chem.MolFromSmiles(x) for x in smiles]
 
 ## produce RDKit 2D descriptors
@@ -31,7 +39,6 @@ generator = rdNormalizedDescriptors.RDKit2DNormalized()
 des = [generator.process(x) for x in smiles]
 des = np.array(des)
 des_ = des[:,1:201]
-
 
 ## produce ECFP fingerprint
 ecfp = np.array(fingerprint.CalculateECFP4Fingerprint(mol[0])[0])
@@ -48,7 +55,7 @@ else:
     input_des = np.concatenate((des_, ecfp), axis=1) 
 
 ## Load Model and make predictions
-model = joblib.load(os.path.join(ROOT, "stack.joblib"))
+model = joblib.load(os.path.join(ROOT, "..", "stack.joblib"))
 pred = model.predict_proba(input_des)
 pred = pred[:,1]
 
