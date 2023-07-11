@@ -5,6 +5,7 @@ import sklearn
 import xgboost as xgb
 import warnings
 import pandas as pd
+import csv
 import numpy as np
 from PyBioMed.PyMolecule import fingerprint
 from rdkit import Chem
@@ -23,15 +24,11 @@ results_file = str(sys.argv[2])
 
 ## load data
 
-# sml = pd.read_csv(smiles_file, names=['Smiles'])
-# smiles = sml['Smiles'].to_numpy()
-# print("smiles",smiles)
-# print("Len of smiles",len(smiles))
-# mol = [Chem.MolFromSmiles(x) for x in smiles]
-# print("mol",mol)
-
-smiles_df = pd.read_csv(smiles_file)
-smiles = smiles_df[smiles_df.columns[0]].tolist()
+smiles = []
+with open(smiles_file, "r") as f:
+    reader = csv.reader(f)
+    for r in reader:
+        smiles += [r[0]]
 mol = [Chem.MolFromSmiles(x) for x in smiles]
 
 ## produce RDKit 2D descriptors
