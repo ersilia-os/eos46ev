@@ -51,6 +51,16 @@ if(len(smiles) == 1):
 else:
     input_des = np.concatenate((des_, ecfp), axis=1) 
 
+# Handling NAN inputs
+for i in range(len(input_des)):
+    problematic_values = np.isnan(input_des[i]) | np.isinf(input_des[i]) | (np.abs(input_des[i]) > np.finfo(np.float64).max)
+    if np.any(problematic_values):
+        problematic_indices = np.where(problematic_values)[0]
+        problematic_data = input_des[i][problematic_values]
+    # Handle NaN, replacing NAN with 0.0
+    nan_indices = np.isnan(input_des[i])
+    input_des[i][nan_indices] = 0.0
+
 ## Load Model and make predictions
 model = joblib.load(os.path.join(ROOT, "..", "stack.joblib"))
 pred = model.predict_proba(input_des)
