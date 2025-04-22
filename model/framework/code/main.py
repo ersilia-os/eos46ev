@@ -1,17 +1,11 @@
 import joblib
 import sys
 import os
-import sklearn
-import xgboost as xgb
 import warnings
-import pandas as pd
 import csv
 import numpy as np
 from PyBioMed.PyMolecule import fingerprint
 from rdkit import Chem
-from rdkit.Chem import MACCSkeys
-from rdkit.Chem import AllChem
-from descriptastorus.descriptors.DescriptorGenerator import MakeGenerator
 from descriptastorus.descriptors import rdNormalizedDescriptors
 from numpy import savetxt
 
@@ -19,23 +13,22 @@ warnings.filterwarnings("ignore")
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
-smiles_file = str(sys.argv[1])
-results_file = str(sys.argv[2])
+input_file = str(sys.argv[1])
+output_file = str(sys.argv[2])
 
 ## load data
 
-smiles = []
-with open(smiles_file, "r") as f:
+with open(input_file, "r") as f:
     reader = csv.reader(f)
-    for r in reader:
-        smiles += [r[0]]
-mol = [Chem.MolFromSmiles(x) for x in smiles]
+    next(reader)  # skip header
+    smiles_list = [r[0] for r in reader]
+mol = [Chem.MolFromSmiles(x) for x in smiles_list]
 
 ## produce RDKit 2D descriptors
 generator = rdNormalizedDescriptors.RDKit2DNormalized()
-des = [generator.process(x) for x in smiles]
+des = [generator.process(x) for x in smiles_list]
 des = np.array(des)
-des_ = des[:,1:201]
+des_ = [row[1:201] for row in des]
 
 ## produce ECFP fingerprint
 ecfp = np.array(fingerprint.CalculateECFP4Fingerprint(mol[0])[0])
@@ -45,7 +38,7 @@ for i in range(1,len(mol)):
     ecfp = np.vstack((ecfp,fp))
 ecfp = ecfp.astype('float64')
 
-if(len(smiles) == 1):
+if(len(smiles_list) == 1):
     input_des = np.append(des_, ecfp) 
     input_des = input_des.reshape(1, -1)
 else:
@@ -62,9 +55,13 @@ for i in range(len(input_des)):
     input_des[i][nan_indices] = 0.0
 
 ## Load Model and make predictions
-model = joblib.load(os.path.join(ROOT, "..", "stack.joblib"))
+model = joblib.load(os.path.join(ROOT, "..", "..","checkpoints", "stack.joblib"))
 pred = model.predict_proba(input_des)
 pred = pred[:,1]
 
 ## Write output to csv file
-np.savetxt(results_file, pred,header='Probability',delimiter=",",comments='')
+with open(output_file, "w") as f:
+    writer = csv.writer(f)
+    writer.writerow(["proba_chemtb"])  # header with column names
+    for p in pred:
+        writer.writerow([p])
