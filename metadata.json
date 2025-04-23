@@ -3,22 +3,19 @@
     "Slug": "chemtb",
     "Status": "Ready",
     "Title": "Mycobacterium tuberculosis inhibitor prediction",
-    "Description": "Identification of active molecules against Mycobacterium tuberculosis using an ensemble of data from ChEMBL25 (Target IDs 360, 2111188 and 2366634). The final model is a stacking model integrating four algorithms, including support vector machine, random forest, extreme gradient boosting and deep neural networks.\n",
+    "Description": "Identification of active molecules against Mycobacterium tuberculosis using an ensemble of data from ChEMBL25 (Target IDs 360, 2111188 and 2366634). The final model is a stacking model integrating four algorithms, including support vector machine, random forest, extreme gradient boosting and deep neural networks.",
+    "Deployment": [
+        "Local"
+    ],
     "Source": "Local",
     "Source Type": "External",
+    "Task": "Annotation",
+    "Subtask": "Activity prediction",
     "Input": [
         "Compound"
     ],
-    "Input Shape": "Single",
     "Input Dimension": 1,
-    "Task": "Annotation",
-    "Subtask": "Activity prediction",
-    "Biomedical Area": [
-        "Tuberculosis"
-    ],
-    "Target Organism": [
-        "Mycobacterium tuberculosis"
-    ],
+    "Input Shape": "Single",
     "Output": [
         "Probability"
     ],
@@ -31,20 +28,23 @@
         "Tuberculosis",
         "Antimicrobial activity"
     ],
-    "Publication": "https://academic.oup.com/bib/article-abstract/22/5/bbab068/6209685",
+    "Biomedical Area": [
+        "Tuberculosis"
+    ],
+    "Target Organism": [
+        "Mycobacterium tuberculosis"
+    ],
     "Publication Type": "Peer reviewed",
     "Publication Year": 2021,
+    "Publication": "https://academic.oup.com/bib/article-abstract/22/5/bbab068/6209685",
     "Source Code": "http://cadd.zju.edu.cn/chemtb/",
     "License": "None",
     "Contributor": "Amna-28",
     "Incorporation Date": "2022-06-28",
+    "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos46ev.zip",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos46ev",
     "Docker Architecture": [
         "AMD64",
         "ARM64"
-    ],
-    "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos46ev.zip",
-    "Deployment": [
-        "Local"
     ]
 }
