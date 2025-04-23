@@ -10,4 +10,4 @@ RUN pip install pandas==1.3.5
 RUN pip install xgboost==0.90
 
 WORKDIR /repo
-COPY ./repo
+COPY . /repo
