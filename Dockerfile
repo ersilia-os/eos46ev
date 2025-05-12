@@ -1,5 +1,7 @@
 FROM bentoml/model-server:0.11.0-py38
 MAINTAINER ersilia
+RUN conda install -c conda-forge cmake=4.0.2
+RUN conda install -c conda-forge gxx=15.1.0
 RUN conda install -c conda-forge scikit-learn==1.1.3
 RUN conda install -c conda-forge rdkit=2024.3.5
 RUN conda install -c conda-forge openbabel=3.1.1
