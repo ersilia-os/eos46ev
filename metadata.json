@@ -15,7 +15,6 @@
         "Compound"
     ],
     "Input Dimension": 1,
-    "Input Shape": "Single",
     "Output": [
         "Score"
     ],
@@ -48,5 +47,6 @@
         "ARM64"
     ],
     "Model Size": 109.0,
-    "Environment Size": 1850.0
+    "Environment Size": 1850.0,
+    "Input Shape": "Single"
 }
