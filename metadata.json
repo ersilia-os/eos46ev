@@ -40,6 +40,8 @@
     "License": "None",
     "Contributor": "Amna-28",
     "Incorporation Date": "2022-06-28",
+    "Last Packaging Date": "2025-12-04",
+    "Release": "v1.0.0",
     "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos46ev.zip",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos46ev",
     "Docker Architecture": [
@@ -48,5 +50,11 @@
     ],
     "Model Size": 109.0,
     "Environment Size": 2193.0,
+    "Image Size": 2190.84,
+    "Computational Performance 1": 27.85,
+    "Computational Performance 2": 17.89,
+    "Computational Performance 3": 21.29,
+    "Computational Performance 4": 64.87,
+    "Computational Performance 5": 260.25,
     "Input Shape": "Single"
 }
