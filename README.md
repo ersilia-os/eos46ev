@@ -2,8 +2,7 @@
 
 Identification of active molecules against Mycobacterium tuberculosis using an ensemble of data from ChEMBL25 (Target IDs 360, 2111188 and 2366634). The final model is a stacking model integrating four algorithms, including support vector machine, random forest, extreme gradient boosting and deep neural networks.
 
-This model was incorporated on 2022-06-28.
-
+This model was incorporated on 2022-06-28.Last packaged on 2025-12-04.
 
 ## Information
 ### Identifiers
@@ -42,7 +41,12 @@ Below are the **Output Columns** of the model:
 ### Resource Consumption
 - **Model Size (Mb):** `109`
 - **Environment Size (Mb):** `2193`
+- **Image Size (Mb):** `2190.84`
 
+**Computational Performance (seconds):**
+- 10 inputs: `27.85`
+- 100 inputs: `21.29`
+- 10000 inputs: `260.25`
 
 ### References
 - **Source Code**: [http://cadd.zju.edu.cn/chemtb/](http://cadd.zju.edu.cn/chemtb/)
