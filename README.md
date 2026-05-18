@@ -50,7 +50,7 @@ Below are the **Output Columns** of the model:
 
 ### References
 - **Source Code**: [http://cadd.zju.edu.cn/chemtb/](http://cadd.zju.edu.cn/chemtb/)
-- **Publication**: [https://academic.oup.com/bib/article-abstract/22/5/bbab068/6209685](https://academic.oup.com/bib/article-abstract/22/5/bbab068/6209685)
+- **Publication**: [https://doi.org/10.1093/bib/bbab068](https://doi.org/10.1093/bib/bbab068)
 - **Publication Type:** `Peer reviewed`
 - **Publication Year:** `2021`
 - **Ersilia Contributor:** [Amna-28](https://github.com/Amna-28)
