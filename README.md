@@ -1,6 +1,6 @@
 # Mycobacterium tuberculosis inhibitor prediction
 
-Identification of active molecules against Mycobacterium tuberculosis using an ensemble of data from ChEMBL25 (Target IDs 360, 2111188 and 2366634). The final model is a stacking model integrating four algorithms, including support vector machine, random forest, extreme gradient boosting and deep neural networks.
+Flags likely inhibitors of Mycobacterium tuberculosis growth. Ye and colleagues assembled a large body of antitubercular screening data and systematically compared descriptor sets and learning algorithms, including deep architectures, to establish which combinations hold up on this endpoint. Whole-cell screening data record whether bacterial growth stopped without identifying the target, so predictions capture phenotypic activity and give no indication of mechanism or of activity against non-replicating bacilli.
 
 This model was incorporated on 2022-06-28.Last packaged on 2025-12-04.
 
@@ -23,7 +23,7 @@ This model was incorporated on 2022-06-28.Last packaged on 2025-12-04.
 ### Output
 - **Output Dimension:** `1`
 - **Output Consistency:** `Fixed`
-- **Interpretation:** Probability of M.tb inhibition (measured as IC50 at cut-off 5 uM)
+- **Interpretation:** Probability that a compound inhibits Mycobacterium tuberculosis growth.
 
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
