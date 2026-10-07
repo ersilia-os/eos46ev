@@ -1,6 +1,6 @@
 # Mycobacterium tuberculosis inhibitor prediction
 
-Flags likely inhibitors of Mycobacterium tuberculosis growth. Ye and colleagues assembled a large body of antitubercular screening data and systematically compared descriptor sets and learning algorithms, including deep architectures, to establish which combinations hold up on this endpoint. Whole-cell screening data record whether bacterial growth stopped without identifying the target, so predictions capture phenotypic activity and give no indication of mechanism or of activity against non-replicating bacilli.
+Flags likely inhibitors of Mycobacterium tuberculosis H37Rv growth. Ye and colleagues pooled minimum inhibitory concentrations for three ChEMBL targets, called a compound active below 5 uM and ended with 2,424 inhibitors against 6,094 inactives. The served predictor is their best configuration, a stacked ensemble of support vector machine, random forest, XGBoost and deep neural network predictions over RDKit descriptors and Morgan fingerprints. It reached an AUC of 0.94 on a scaffold-split test set but 0.75 on compounds published later, so unfamiliar scaffolds are read with caution.
 
 This model was incorporated on 2022-06-28.Last packaged on 2025-12-04.
 
@@ -23,7 +23,7 @@ This model was incorporated on 2022-06-28.Last packaged on 2025-12-04.
 ### Output
 - **Output Dimension:** `1`
 - **Output Consistency:** `Fixed`
-- **Interpretation:** Probability that a compound inhibits Mycobacterium tuberculosis growth.
+- **Interpretation:** Probability of Mycobacterium tuberculosis growth inhibition, with actives defined by a minimum inhibitory concentration below 5 uM.
 
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
