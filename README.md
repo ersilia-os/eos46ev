@@ -2,7 +2,7 @@
 
 Flags likely inhibitors of Mycobacterium tuberculosis H37Rv growth. Ye and colleagues pooled minimum inhibitory concentrations for three ChEMBL targets, called a compound active below 5 uM and ended with 2,424 inhibitors against 6,094 inactives. The served predictor is their best configuration, a stacked ensemble of support vector machine, random forest, XGBoost and deep neural network predictions over RDKit descriptors and Morgan fingerprints. It reached an AUC of 0.94 on a scaffold-split test set but 0.75 on compounds published later, so unfamiliar scaffolds are read with caution.
 
-This model was incorporated on 2022-06-28.Last packaged on 2025-12-04.
+This model was incorporated on 2022-06-28.Last packaged on 2026-10-07.
 
 ## Information
 ### Identifiers
@@ -41,12 +41,12 @@ Below are the **Output Columns** of the model:
 ### Resource Consumption
 - **Model Size (Mb):** `109`
 - **Environment Size (Mb):** `2095`
-- **Image Size (Mb):** `2190.84`
+- **Image Size (Mb):** `2187.65`
 
 **Computational Performance (seconds):**
-- 10 inputs: `27.85`
-- 100 inputs: `21.29`
-- 10000 inputs: `260.25`
+- 10 inputs: `24.47`
+- 100 inputs: `15.86`
+- 10000 inputs: `161.94`
 
 ### References
 - **Source Code**: [http://cadd.zju.edu.cn/chemtb/](http://cadd.zju.edu.cn/chemtb/)
