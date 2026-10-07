@@ -24,9 +24,21 @@ with open(input_file, "r") as f:
     smiles_list = [r[0] for r in reader]
 mol = [Chem.MolFromSmiles(x) for x in smiles_list]
 
+## molecules RDKit cannot parse are replaced by a placeholder so that the
+## vectorised featurisation below keeps its shape; their predictions are
+## discarded again before the output is written
+invalid_idx = [i for i, m in enumerate(mol) if m is None]
+PLACEHOLDER_SMILES = "C"
+placeholder_mol = Chem.MolFromSmiles(PLACEHOLDER_SMILES)
+mol = [m if m is not None else placeholder_mol for m in mol]
+smiles_for_descriptors = [
+    s if i not in invalid_idx else PLACEHOLDER_SMILES
+    for i, s in enumerate(smiles_list)
+]
+
 ## produce RDKit 2D descriptors
 generator = rdNormalizedDescriptors.RDKit2DNormalized()
-des = [generator.process(x) for x in smiles_list]
+des = [generator.process(x) for x in smiles_for_descriptors]
 des = np.array(des)
 des_ = [row[1:201] for row in des]
 
@@ -58,6 +70,9 @@ for i in range(len(input_des)):
 model = joblib.load(os.path.join(ROOT, "..", "..","checkpoints", "stack.joblib"))
 pred = model.predict_proba(input_des)
 pred = pred[:,1]
+
+## blank out the placeholder rows
+pred = [None if i in set(invalid_idx) else p for i, p in enumerate(pred)]
 
 ## Write output to csv file
 with open(output_file, "w") as f:
