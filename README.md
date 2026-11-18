@@ -2,7 +2,8 @@
 
 Flags likely inhibitors of Mycobacterium tuberculosis H37Rv growth. Ye and colleagues pooled minimum inhibitory concentrations for three ChEMBL targets, called a compound active below 5 uM and ended with 2,424 inhibitors against 6,094 inactives. The served predictor is their best configuration, a stacked ensemble of support vector machine, random forest, XGBoost and deep neural network predictions over RDKit descriptors and Morgan fingerprints. It reached an AUC of 0.94 on a scaffold-split test set but 0.75 on compounds published later, so unfamiliar scaffolds are read with caution.
 
-This model was incorporated on 2022-06-28.Last packaged on 2026-10-07.
+This model was incorporated on 2022-06-28.
+Last packaged on 2026-10-07.
 
 ## Information
 ### Identifiers
@@ -14,7 +15,7 @@ This model was incorporated on 2022-06-28.Last packaged on 2026-10-07.
 - **Subtask:** `Activity prediction`
 - **Biomedical Area:** `Tuberculosis`
 - **Target Organism:** `Mycobacterium tuberculosis`
-- **Tags:** `IC50`, `Antimicrobial activity`
+- **Tags:** `Antimicrobial activity`
 
 ### Input
 - **Input:** `Compound`
@@ -37,6 +38,7 @@ Below are the **Output Columns** of the model:
 - **DockerHub**: [https://hub.docker.com/r/ersiliaos/eos46ev](https://hub.docker.com/r/ersiliaos/eos46ev)
 - **Docker Architecture:** `AMD64`, `ARM64`
 - **S3 Storage**: [https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos46ev.zip](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos46ev.zip)
+- **Apptainer**: [https://models-sif.s3.eu-north-1.amazonaws.com/eos46ev_v1.sif](https://models-sif.s3.eu-north-1.amazonaws.com/eos46ev_v1.sif)
 
 ### Resource Consumption
 - **Model Size (Mb):** `109`
